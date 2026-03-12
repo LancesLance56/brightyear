@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Add New Product{% endblock %}
+
+{% block header %}
+  <h1>Add New Product</h1>
+{% endblock %}
+
+{% block content %}
+  <div class="animate-up">
+    <form method="post" enctype="multipart/form-data">
+
+      <label for="name">Product Name</label>
+      <input name="name" id="name" required placeholder="e.g. Baltic Birch Plywood">
+
+      <label for="description">Product Description</label>
+      <textarea name="description" id="description" rows="5"
+                style="width: 100%; border-radius: var(--radius); border: 1px solid var(--border); padding: 0.85rem;"
+                placeholder="Describe the plywood grade, thickness, and uses..."></textarea>
+
+      <label for="image_file">Product Image</label>
+      <input type="file" name="image_file" id="image_file" accept="image/*">
+
+      <input type="submit" value="Create Product">
+
+      <div style="text-align: center; margin-top: 1rem;">
+        <a href="{{ url_for('admin.index') }}" style="color: var(--text-muted);">Cancel</a>
+      </div>
+    </form>
+  </div>
+{% endblock %}

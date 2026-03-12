@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact & Inquiries | Atlas Plywood{% endblock %}
+
+{% block content %}
+  <div class="section animate-up">
+    <div style="text-align: center; margin-bottom: 3rem;">
+      <h1 style="font-size: 2.5rem; margin: 2rem">Get a Quote</h1>
+      <p style="max-width: 600px; margin: auto; color: var(--text-muted);">
+        Have a specific project in mind? Fill out the form below and our timber specialists
+        will get back to you with pricing and availability within 24 hours.
+      </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 350px; gap: 4rem; align-items: start;">
+
+      <div style="background: var(--surface); padding: 0; border: none;">
+        <form action="#" method="POST" style="border: none;padding: 3rem; margin: 0; max-width: 100%;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <label>Full Name</label>
+              <input type="text" name="name" placeholder="Juan Dela Cruz" required>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <label>Email Address</label>
+              <input type="email" name="email" placeholder="juan@example.com" required>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1.5rem;">
+            <label>Project Type</label>
+            <select name="project_type"
+                    style="padding: 0.85rem; border: 1px solid var(--border); border-radius: 6px; background: white; font-family: inherit;">
+              <option value="furniture">Custom Furniture</option>
+              <option value="construction">Home Construction</option>
+              <option value="marine">Marine / Boat Building</option>
+              <option value="interior">Interior Paneling</option>
+              <option value="bulk">Wholesale / Bulk Order</option>
+            </select>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1.5rem;">
+            <label>Message / Specifications</label>
+            <textarea name="message" rows="5"
+                      placeholder="Tell us about the dimensions or specific plywood types you need..."
+                      style="padding: 0.85rem; border: 1px solid var(--border); border-radius: 6px; font-family: inherit; resize: vertical;"></textarea>
+          </div>
+
+          <input type="submit" value="Send Inquiry" style="width: 100%; margin-top: 2rem; background: var(--nav);">
+        </form>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 2rem;">
+        <div style="background: var(--brand); color: white; padding: 2rem; border-radius: var(--radius);">
+          <h3 style="color: white; margin-bottom: 1rem;">Visit Us</h3>
+          <p style="font-size: 0.9rem; opacity: 0.9; margin-bottom: 1.5rem;">
+            1241 EDSA, Balintawak, Quezon City,<br>
+            Metro Manila, Philippines
+          </p>
+          <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem;">
+            <p><strong>Mon - Fri:</strong> 8:30 AM - 4:30 PM</p>
+            <p><strong>Sunday:</strong> Closed</p>
+          </div>
+        </div>
+
+        <div style="padding: 1rem;">
+          <h4 style="margin-bottom: 0.5rem;">Direct Contact</h4>
+          <p style="color: var(--text-muted);">📞 (02) 8361 6224</p>
+          <p style="color: var(--text-muted);">✉️ sales@atlasplywood.ph</p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

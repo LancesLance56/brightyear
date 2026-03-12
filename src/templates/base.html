@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{% endblock %} - Bright Year Plywood</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="main-header">
+
+  <div style="display: flex;">
+    <img class="logo" src="../static/images/logo.jpg" alt="">
+    <a href="{{ url_for('index') }}"><h2 id="nav-logo-text">
+      Bright Year Plywood and Veneer</h2></a>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="{{ url_for('index') }}">Home</a></li>
+      <li><a href="{{ url_for('contact') }}">Contact</a></li>
+      <li><a href="{{ url_for('catalog') }}">Products</a></li>
+      {% if g.user.username == 'admin' %}
+        <li><a href="{{ url_for('admin.index') }}">Admin Page</a></li>
+      {% endif %}
+      {% if g.user %}
+        <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+        <li><span style="margin: 0; color: var(--text-emphasize)">{{ g.user['username'] }}</span></li>
+      {% else %}
+        <li><a href="{{ url_for('auth.register') }}">Register</a></li>
+        <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+</header>
+
+{% block hero %}{% endblock %}
+
+<section class="content animate-up">
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+
+  {% block content %}{% endblock %}
+</section>
+
+<footer>
+  <p>© 2026 Bright Year Plywood LLC</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem;"
+       class="animate-up">
+    <div>
+      <h1 style="margin-bottom: 0.25rem;">Inventory Management</h1>
+      <p style="color: var(--text-muted);">Manage your plywood catalog and stock imagery.</p>
+    </div>
+    <a href="{{ url_for('admin.create') }}" class="btn">+ Add New Product</a>
+  </div>
+
+  <div class="animate-up" style="animation-delay: 0.2s;">
+    <div
+        style="display: grid; grid-template-columns: 120px 2fr 3fr 150px; padding: 1rem; background: var(--nav); color: white; border-radius: var(--radius) var(--radius) 0 0; font-weight: 600; font-size: 0.9rem; letter-spacing: 0.5px;">
+      <div>Preview</div>
+      <div>Product Name</div>
+      <div>Description Summary</div>
+      <div style="text-align: right;">Actions</div>
+    </div>
+
+    {% for product in products %}
+      <div
+          style="display: grid; grid-template-columns: 120px 2fr 3fr 150px; align-items: center; padding: 1.25rem 1rem; background: var(--surface); border-bottom: 1px solid var(--border); transition: background 0.2s;"
+          onmouseover="this.style.background='#fcfbf9'" onmouseout="this.style.background='var(--surface)'">
+
+        <div
+            style="width: 80px; height: 60px; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); background: #eee;">
+          <img
+              src="{{ url_for('static', filename='uploads/' + product['image_url']) if product['image_url'] and not product['image_url'].startswith('http') else product['image_url'] or 'https://via.placeholder.com/80' }}"
+              style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+
+        <div style="font-weight: 700; color: var(--brand); padding-right: 1rem;">
+          {{ product['name'] }}
+        </div>
+
+        <div style="color: var(--text-muted); font-size: 0.9rem; padding-right: 1rem; line-height: 1.4;">
+          {{ product['description'][:100] }}{% if product['description']|length > 100 %}...{% endif %}
+        </div>
+
+        <div style="display: flex; gap: 1rem; justify-content: flex-end; align-items: center;">
+          <a href="{{ url_for('admin.update', id=product['id']) }}"
+             style="color: var(--accent); font-size: 0.9rem; font-weight: 600;">Edit</a>
+
+          <form action="{{ url_for('admin.delete', id=product['id']) }}" method="post"
+                style="all: unset; display: inline;" onsubmit="return confirm('Delete this product permanently?');">
+            <button type="submit"
+                    style="background: none; border: none; color: #dc3545; cursor: pointer; font-family: inherit; font-size: 0.9rem; font-weight: 600; padding: 0;">
+              Delete
+            </button>
+          </form>
+        </div>
+      </div>
+    {% endfor %}
+
+    {% if not products %}
+      <div
+          style="text-align: center; padding: 4rem; background: var(--surface); border-radius: 0 0 var(--radius) var(--radius); border: 1px dashed var(--border);">
+        <p style="color: var(--text-muted);">No products found in the database.</p>
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}

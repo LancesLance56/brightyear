@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+
+{% block title %}Home | Atlas Plywood{% endblock %}
+
+{% block hero %}
+  <div class="hero animate-up">
+    <h1>Budget-Minded Plywood Options</h1>
+    <p>1241 EDSA Balintawak Quezon City, Metro Manila, Philippines</p>
+    <a class="clickable-link" href="https://www.facebook.com/veneerphilippines/">Facebook: @veneerphilippines</a><br>
+    <a class="clickable-link" style="color: #C13584;" href="https://www.instagram.com/brightyearplywood/">Instagram: @brightyearplywood</a>
+    <div style="margin-top: 2rem;">
+      <a href="{{ url_for('catalog') }}" class="btn">View The Full Catalog</a>
+      <a href="#about" class="btn" style="background: transparent; border: 2px solid var(--accent); margin-left: 10px;">Our
+        Standards</a>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="section animate-up" style="margin-top: 4rem; margin-bottom: 5rem;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+      <div>
+        <span style="color: var(--accent); font-weight: bold; text-transform: uppercase; letter-spacing: 2px;">Quality Products Only</span>
+        <h2 style="font-size: 2.8rem; margin-top: 1rem;">Plywood and Veneer</h2><h2 style="font-size: 2.8rem; color: var(--text-emphasize);"> Anytime, Anywhere.</h2>
+        <p style="font-size: 1.1rem; color: var(--text-muted); margin: 1.5rem 0;">
+          Located in EDSA, Bright Year Plywood caters to all, from hobbyist crafts to professional-grade construction,
+          with prices found nowhere else.
+        </p>
+        <div style="display: flex; gap: 2rem; margin-top: 2rem;">
+          <div>
+            <h4 style="font-size: 1.5rem; color: var(--brand);">67k+</h4>
+            <p style="font-size: 0.8rem; text-transform: uppercase; color: var(--accent);">Sheets Sold</p>
+          </div>
+          <div style="border-left: 1px solid var(--border); padding-left: 2rem;">
+            <h4 style="font-size: 1.5rem; color: var(--brand);">NCR Wide</h4>
+            <p style="font-size: 0.8rem; text-transform: uppercase; color: var(--accent);">Daily Delivery</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="position: relative;">
+        <img src="../static/images/wood.jpg"
+             alt="Wood Texture"
+             style="width: 100%; height: 400px; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow);">
+        <div
+            style="position: absolute; bottom: -20px; left: -20px; background: var(--nav); color: white; padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow);">
+          <p style="font-weight: bold; font-size: 1.2rem; margin: 0;">Birch Plywood</p>
+          <p style="font-size: 0.9rem; margin: 0; opacity: 0.9;">PHP 6767</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr style="border: 0; border-top: 1px solid var(--border); margin: 4rem 0;">
+
+  <div class="section">
+    <div class="animate-up" style="text-align: center; margin-bottom: 3rem;">
+      <span style="color: var(--accent); font-weight: bold; text-transform: uppercase; letter-spacing: 2px;">Premium Picks</span>
+      <h2 style="font-size: 2.5rem;">Featured Inventory</h2>
+      <p style="max-width: 600px; margin: auto;">Explore our most popular cuts, from marine-grade durability to
+        furniture-ready birch panels.</p>
+    </div>
+
+    <div class="carousel-container">
+      <div class="carousel-track" id="carouselTrack">
+        {% for i in range(3) %}
+          {% for product in products %}
+            <div class="card carousel-card" data-index="{{ loop.index0 }}">
+              <img
+                  src="{{ product['image_url'] if product.image_url.startswith('http') else url_for('static', filename='uploads/' + product['image_url']) }}"
+                  alt="{{ product['name'] }}">
+              <div class="card-content">
+                <span
+                    style="font-size: 0.75rem; color: var(--accent); font-weight: bold;">{{ product['category'] }}</span>
+                <h3>{{ product['name'] }}</h3>
+                <p style="font-weight: bold; color: var(--brand);">₱{{ "%.2f"|format(product['price']) }}</p>
+              </div>
+            </div>
+          {% endfor %}
+        {% endfor %}
+      </div>
+
+      <div class="carousel-nav">
+        <button class="nav-btn" onclick="scrollCarousel(-360)">
+          <span class="material-symbols-rounded">arrow_back_ios_new</span>
+        </button>
+        <button class="nav-btn" onclick="scrollCarousel(360)">
+          <span class="material-symbols-rounded">arrow_forward_ios</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <hr style="border: 0; border-top: 1px solid var(--border); margin: 4rem 0;">
+
+  <div id="about" class="section animate-up">
+    <div
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; text-align: center;">
+      <div>
+        <div style="font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem;">🌲</div>
+        <h3>Quality Guaranteed</h3>
+        <p style="color: var(--text-muted);">All our wood is good, not bad.</p>
+      </div>
+      <div>
+        <div style="font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem;">👩🏼‍💻</div>
+        <h3>Anything You need</h3>
+        <p style="color: var(--text-muted);">Always active on Viber and Email.</p>
+      </div>
+      <div>
+        <div style="font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem;">🚚</div>
+        <h3>We Do, Deliver</h3>
+        <p style="color: var(--text-muted);">Included transport via Lalamove.</p>
+      </div>
+    </div>
+  </div>
+
+  <div
+      style="background: var(--nav); color: white; padding: 5rem 1.5rem; margin: 4rem 0; text-align: center; border-radius: var(--radius);">
+    <div class="animate-up">
+      <h2 style="color: white; font-size: 2rem;">Interested?</h2>
+      <p style="margin: 1.5rem auto; max-width: 500px; opacity: 0.9;">We are always active on Viber and Email</p>
+      <p style="margin: 1.5rem auto; max-width: 500px; opacity: 0.9;">Contact +63 917 535 0635</p>
+      <a href="{{ url_for('contact') }}" class="btn" style="background: var(--accent);">Get a Quote</a>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const track = document.getElementById('carouselTrack');
+      const cards = document.querySelectorAll('.carousel-card');
+
+      const totalWidth = track.scrollWidth;
+      track.scrollLeft = totalWidth / 3;
+
+      const update3DEffect = () => {
+        const trackRect = track.getBoundingClientRect();
+        const centerX = trackRect.left + (trackRect.width / 2);
+
+        if (track.scrollLeft >= (totalWidth * 2 / 3)) {
+          track.scrollLeft -= (totalWidth / 3);
+        } else if (track.scrollLeft <= 0) {
+          track.scrollLeft += (totalWidth / 3);
+        }
+
+        cards.forEach(card => {
+          const cardRect = card.getBoundingClientRect();
+          const cardCenterX = cardRect.left + (cardRect.width / 2);
+          let distance = (cardCenterX - centerX) / (trackRect.width / 2);
+
+          distance = Math.max(Math.min(distance, 1.5), -1.5);
+
+          const rotation = distance * -45;
+          const scale = 1 - (Math.abs(distance) * 0.2);
+          const zDist = Math.abs(distance) * -5;
+
+          card.style.transform = `rotateY(${-rotation}deg) scale(${scale}) translateZ(${zDist}px)`;
+        });
+      };
+
+      track.addEventListener('scroll', () => {
+        window.requestAnimationFrame(update3DEffect);
+      });
+
+      // Initial position fix
+      window.requestAnimationFrame(update3DEffect);
+    });
+
+    // Update the button logic to handle the clones
+    function scrollCarousel(distance) {
+      const track = document.getElementById('carouselTrack');
+      track.scrollBy({left: distance, behavior: 'smooth'});
+    }
+  </script>
+{% endblock %}

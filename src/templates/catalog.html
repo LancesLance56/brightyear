@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Our Plywood Collection{% endblock %}
+
+{% block content %}
+  <div class="section">
+    <div class="animate-up" style="text-align: center; margin-bottom: 3rem;">
+      <span
+          style="color: var(--accent); font-weight: bold; text-transform: uppercase; letter-spacing: 2px;">In Stock</span>
+      <h2 style="font-size: 2.5rem;">Full Inventory</h2>
+      <p style="max-width: 600px; margin: auto;">Explore our most popular cuts, from marine-grade durability to
+        furniture-ready birch panels.</p>
+    </div>
+
+    <div class="catalog-grid">
+      {% for product in products %}
+        <div class="card animate-up">
+          <img
+              src="{{ product['image_url'] if product['image_url'].startswith('http') else url_for('static', filename='uploads/' + product['image_url']) }}"
+              alt="{{ product['name'] }}">
+          <div class="card-content">
+            <span style="color: var(--accent); font-weight: bold; font-size: 0.8rem;">{{ product['category'] }}</span>
+            <h3>{{ product['name'] }}</h3>
+            <p>{{ product['description'][:100] }}...</p>
+            <div style="margin-top: 1rem; font-weight: bold; color: var(--brand); font-size: 1.2rem;">
+              ₱{{ "%.2f"|format(product['price']) }}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
