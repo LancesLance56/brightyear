@@ -1,0 +1,12 @@
+User-agent: *
+# Block administrative and private routes
+Disallow: /admin/
+Disallow: /auth/
+Disallow: /instance/
+Disallow: /venv/
+
+# Allow everything else
+Allow: /
+
+# Direct Google to your sitemap
+Sitemap: https://brightyearplywood.com/sitemap.xml
