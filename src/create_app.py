@@ -45,7 +45,7 @@ def create_app(test_config=None):
         return render_template("catalog.html", products=products)
 
     @app.route('/contact')
-    def contact():
+    def contact_page():
         return render_template('contact.html')
 
     from . import db

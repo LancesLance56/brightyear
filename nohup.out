@@ -1,0 +1,20 @@
+[2026-03-14 14:57:39 +0800] [108816] [INFO] Starting gunicorn 25.1.0
+[2026-03-14 14:57:39 +0800] [108816] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2026-03-14 14:57:39 +0800] [108816] [ERROR] connection to ('0.0.0.0', 5000) failed: [Errno 98] Address already in use
+[2026-03-14 14:57:40 +0800] [108816] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2026-03-14 14:57:40 +0800] [108816] [ERROR] connection to ('0.0.0.0', 5000) failed: [Errno 98] Address already in use
+[2026-03-14 14:57:41 +0800] [108816] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2026-03-14 14:57:41 +0800] [108816] [ERROR] connection to ('0.0.0.0', 5000) failed: [Errno 98] Address already in use
+[2026-03-14 14:57:42 +0800] [108816] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2026-03-14 14:57:42 +0800] [108816] [ERROR] connection to ('0.0.0.0', 5000) failed: [Errno 98] Address already in use
+[2026-03-14 14:57:43 +0800] [108816] [ERROR] Connection in use: ('0.0.0.0', 5000)
+[2026-03-14 14:57:43 +0800] [108816] [ERROR] connection to ('0.0.0.0', 5000) failed: [Errno 98] Address already in use
+[2026-03-14 14:57:44 +0800] [108816] [ERROR] Can't connect to ('0.0.0.0', 5000)
+[2026-03-14 14:58:29 +0800] [109083] [INFO] Starting gunicorn 25.1.0
+[2026-03-14 14:58:29 +0800] [109083] [INFO] Listening at: http://0.0.0.0:5000 (109083)
+[2026-03-14 14:58:29 +0800] [109083] [INFO] Using worker: sync
+[2026-03-14 14:58:29 +0800] [109089] [INFO] Booting worker with pid: 109089
+[2026-03-14 14:58:29 +0800] [109083] [INFO] Control socket listening at /home/rock/brightyear/gunicorn.ctl
+[2026-03-14 14:58:29 +0800] [109090] [INFO] Booting worker with pid: 109090
+[2026-03-14 14:58:29 +0800] [109091] [INFO] Booting worker with pid: 109091
+[2026-03-14 14:58:29 +0800] [109092] [INFO] Booting worker with pid: 109092
