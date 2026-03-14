@@ -24,11 +24,11 @@ def index():
 @login_required
 def create():
     if request.method == 'POST':
-        # Use .get() to prevent crashes if a field is missing
         name = request.form.get('name')
         description = request.form.get('description')
+        price = request.form.get('price')
+        category = request.form.get('category')
 
-        # Handle the file upload
         file = request.files.get('image_file')
         filename = None
 
@@ -39,13 +39,12 @@ def create():
         if not name:
             flash('Name is required.')
         elif not description:
-            # If you don't use .get(), this is where the 400 error usually happens
             flash('Description is required.')
         else:
             db = get_db()
             db.execute(
-                'INSERT INTO product (name, description, image_url) VALUES (?, ?, ?)',
-                (name, description, filename)
+                'INSERT INTO product (name, description, image_url, price, category) VALUES (?, ?, ?, ?, ?)',
+                (name, description, filename, price, category)
             )
             db.commit()
             flash(f"Successfully added {name}!")
@@ -61,7 +60,6 @@ def update(id):
     product = db.execute('SELECT * FROM product WHERE id = ?', (id,)).fetchone()
 
     if request.method == 'POST':
-        # Use .get() to prevent 400 Bad Request errors
         name = request.form.get('name')
         description = request.form.get('description')
         price = request.form.get('price')  # Add this
@@ -79,8 +77,8 @@ def update(id):
             flash('Name is required.')
         else:
             db.execute(
-                'UPDATE product SET name = ?, description = ?, image_url = ? WHERE id = ?',
-                (name, description, filename, id, price, category)
+                'UPDATE product SET name = ?, description = ?, image_url = ?, price = ?, category = ? WHERE id = ?',
+                (name, description, filename, price, category, id)
             )
             db.commit()
             return redirect(url_for('admin.index'))

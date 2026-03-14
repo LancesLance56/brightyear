@@ -11,21 +11,42 @@
     <form method="post" enctype="multipart/form-data">
 
       <label for="name">Product Name</label>
-      <input name="name" id="name" required placeholder="e.g. Baltic Birch Plywood">
+      <input name="name" id="name" placeholder="e.g. Birch Ply" required>
 
-      <label for="description">Product Description</label>
-      <textarea name="description" id="description" rows="5"
-                style="width: 100%; border-radius: var(--radius); border: 1px solid var(--border); padding: 0.85rem;"
-                placeholder="Describe the plywood grade, thickness, and uses..."></textarea>
-
-      <label for="image_file">Product Image</label>
-      <input type="file" name="image_file" id="image_file" accept="image/*">
-
-      <input type="submit" value="Create Product">
-
-      <div style="text-align: center; margin-top: 1rem;">
-        <a href="{{ url_for('admin.index') }}" style="color: var(--text-muted);">Cancel</a>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+        <div>
+          <label for="price">Price (₱)</label>
+          <input type="number" step="0.01" name="price" id="price" placeholder="Insert (0) to not show" required
+                 style="width: 100%;">
+        </div>
+        <div>
+          <label for="category">Category</label>
+          <select name="category" id="category"
+                  style="width: 100%; padding: 0.85rem; border-radius: 6px; border: 1px solid var(--border); background: white;">
+            <option value="Furniture">Furniture</option>
+            <option value="Marine">Marine</option>
+            <option value="Construction">Construction</option>
+            <option value="Interior">Interior</option>
+            <option value="Industrial">Industrial</option>
+          </select>
+        </div>
       </div>
+
+      <label for="description" style="margin-top: 1rem; display: block;">Description</label>
+      <textarea name="description" id="description" rows="5"
+                style="width: 100%; border-radius: 6px; border: 1px solid var(--border); padding: 0.85rem; font-family: inherit;"></textarea>
+
+      <div
+          style="margin-top: 1.5rem; padding: 1rem; border: 1px dashed var(--border); border-radius: var(--radius); text-align: center;">
+
+        <label for="image_file" style="display: block;">Upload Image</label>
+        <input type="file" name="image_file" id="image_file" accept="image/*" style="border: none; padding: 0;">
+      </div>
+
+      <input type="submit" value="Create Product" style="width: 100%; background: var(--nav); margin-top: 2rem;">
+      <a href="{{ url_for('admin.index') }}"
+         style="display: block; text-align: center; margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">Cancel
+        and Go Back</a>
     </form>
   </div>
 {% endblock %}

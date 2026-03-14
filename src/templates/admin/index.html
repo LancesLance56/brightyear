@@ -2,11 +2,12 @@
 {% block title %}Admin Dashboard{% endblock %}
 
 {% block content %}
+  <div class="section animate-up" style="margin-top: 3rem;margin-bottom: 5rem;">
   <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem;"
        class="animate-up">
     <div>
       <h1 style="margin-bottom: 0.25rem;">Inventory Management</h1>
-      <p style="color: var(--text-muted);">Manage your plywood catalog and stock imagery.</p>
+      <p style="color: var(--text-muted);">Manage the displayed plywood and stock imagery. (see the catalog)</p>
     </div>
     <a href="{{ url_for('admin.create') }}" class="btn">+ Add New Product</a>
   </div>
@@ -61,5 +62,6 @@
         <p style="color: var(--text-muted);">No products found in the database.</p>
       </div>
     {% endif %}
+  </div>
   </div>
 {% endblock %}

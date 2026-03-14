@@ -4,10 +4,11 @@
 
 {% block hero %}
   <div class="hero animate-up">
-    <h1>Budget-Minded Plywood Options</h1>
-    <p>1241 EDSA Balintawak Quezon City, Metro Manila, Philippines</p>
+    <h1>Plywood and Veneer Solutions</h1>
+    <a class="clickable-link" style="color: var(--accent)" href="https://maps.app.goo.gl/ZFFfkJ2P284W7dCz8">Located in: 1241 EDSA Balintawak Quezon City, Metro Manila, Philippines</a><br>
     <a class="clickable-link" href="https://www.facebook.com/veneerphilippines/">Facebook: @veneerphilippines</a><br>
-    <a class="clickable-link" style="color: #C13584;" href="https://www.instagram.com/brightyearplywood/">Instagram: @brightyearplywood</a>
+    <a class="clickable-link" style="color: #C13584;" href="https://www.instagram.com/brightyearplywood/">Instagram:
+      @brightyearplywood</a>
     <div style="margin-top: 2rem;">
       <a href="{{ url_for('catalog') }}" class="btn">View The Full Catalog</a>
       <a href="#about" class="btn" style="background: transparent; border: 2px solid var(--accent); margin-left: 10px;">Our
@@ -19,17 +20,18 @@
 {% block content %}
   <div class="section animate-up" style="margin-top: 4rem; margin-bottom: 5rem;">
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
-      <div>
+      <div id="intro-statement">
         <span style="color: var(--accent); font-weight: bold; text-transform: uppercase; letter-spacing: 2px;">Quality Products Only</span>
-        <h2 style="font-size: 2.8rem; margin-top: 1rem;">Plywood and Veneer</h2><h2 style="font-size: 2.8rem; color: var(--text-emphasize);"> Anytime, Anywhere.</h2>
+        <h2 style="font-size: 2.8rem; margin-top: 1rem;">Plywood and Veneer</h2>
+        <h2 style="font-size: 2.8rem; color: var(--text-emphasize);"> Anytime, Anywhere.</h2>
         <p style="font-size: 1.1rem; color: var(--text-muted); margin: 1.5rem 0;">
           Located in EDSA, Bright Year Plywood caters to all, from hobbyist crafts to professional-grade construction,
           with prices found nowhere else.
         </p>
         <div style="display: flex; gap: 2rem; margin-top: 2rem;">
           <div>
-            <h4 style="font-size: 1.5rem; color: var(--brand);">67k+</h4>
-            <p style="font-size: 0.8rem; text-transform: uppercase; color: var(--accent);">Sheets Sold</p>
+            <h4 style="font-size: 1.5rem; color: var(--brand);">AVAILABLE FOR</h4>
+            <p style="font-size: 0.8rem; text-transform: uppercase; color: var(--accent);">Pickup and Inspection</p>
           </div>
           <div style="border-left: 1px solid var(--border); padding-left: 2rem;">
             <h4 style="font-size: 1.5rem; color: var(--brand);">NCR Wide</h4>
@@ -45,7 +47,8 @@
         <div
             style="position: absolute; bottom: -20px; left: -20px; background: var(--nav); color: white; padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow);">
           <p style="font-weight: bold; font-size: 1.2rem; margin: 0;">Birch Plywood</p>
-          <p style="font-size: 0.9rem; margin: 0; opacity: 0.9;">PHP 6767</p>
+          <a href="https://www.facebook.com/veneerphilippines"
+             style="font-size: 0.9rem; margin: 0; opacity: 0.9; color: var(--text-emphasize);">Get a Quote Today!</a>
         </div>
       </div>
     </div>
@@ -57,8 +60,7 @@
     <div class="animate-up" style="text-align: center; margin-bottom: 3rem;">
       <span style="color: var(--accent); font-weight: bold; text-transform: uppercase; letter-spacing: 2px;">Premium Picks</span>
       <h2 style="font-size: 2.5rem;">Featured Inventory</h2>
-      <p style="max-width: 600px; margin: auto;">Explore our most popular cuts, from marine-grade durability to
-        furniture-ready birch panels.</p>
+      <p style="margin: auto;">Explore our most popular cuts, from marine-grade durability to furniture-ready birch panels.</p>
     </div>
 
     <div class="carousel-container">
@@ -73,7 +75,13 @@
                 <span
                     style="font-size: 0.75rem; color: var(--accent); font-weight: bold;">{{ product['category'] }}</span>
                 <h3>{{ product['name'] }}</h3>
-                <p style="font-weight: bold; color: var(--brand);">₱{{ "%.2f"|format(product['price']) }}</p>
+                <a href="https://www.facebook.com/veneerphilippines" style="color: var(--text-emphasize)">
+                  {% if product['price'] != 0.0 %}
+                    ₱{{ "%.2f"|format(product['price']) }}
+                  {% else %}
+                    Get a Quote Today
+                  {% endif %}
+                </a>
               </div>
             </div>
           {% endfor %}
@@ -99,16 +107,16 @@
       <div>
         <div style="font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem;">🌲</div>
         <h3>Quality Guaranteed</h3>
-        <p style="color: var(--text-muted);">All our wood is good, not bad.</p>
+        <p style="color: var(--text-muted);">We sell local and imported wood.</p>
       </div>
       <div>
         <div style="font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem;">👩🏼‍💻</div>
         <h3>Anything You need</h3>
-        <p style="color: var(--text-muted);">Always active on Viber and Email.</p>
+        <p style="color: var(--text-muted);">Always active on Viber and Messenger.</p>
       </div>
       <div>
         <div style="font-size: 2.5rem; color: var(--accent); margin-bottom: 1rem;">🚚</div>
-        <h3>We Do, Deliver</h3>
+        <h3>We Deliver</h3>
         <p style="color: var(--text-muted);">Included transport via Lalamove.</p>
       </div>
     </div>
@@ -118,9 +126,9 @@
       style="background: var(--nav); color: white; padding: 5rem 1.5rem; margin: 4rem 0; text-align: center; border-radius: var(--radius);">
     <div class="animate-up">
       <h2 style="color: white; font-size: 2rem;">Interested?</h2>
-      <p style="margin: 1.5rem auto; max-width: 500px; opacity: 0.9;">We are always active on Viber and Email</p>
+      <p style="margin: 1.5rem auto; max-width: 500px; opacity: 0.9;">We are always active on Viber and Facebook</p>
       <p style="margin: 1.5rem auto; max-width: 500px; opacity: 0.9;">Contact +63 917 535 0635</p>
-      <a href="{{ url_for('contact') }}" class="btn" style="background: var(--accent);">Get a Quote</a>
+      <a href="{{ url_for('contact_page') }}" class="btn" style="background: var(--accent);">Let's Talk About It</a>
     </div>
   </div>
 

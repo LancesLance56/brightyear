@@ -16,16 +16,21 @@
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
         <div>
           <label for="price">Price (₱)</label>
-          <input type="number" step="0.01" name="price" id="price" value="{{ product['price'] }}" required style="width: 100%;">
+          <input type="number" step="0.01" name="price" id="price" value="{{ product['price'] }}" required
+                 style="width: 100%;">
         </div>
         <div>
           <label for="category">Category</label>
-          <select name="category" id="category" style="width: 100%; padding: 0.85rem; border-radius: 6px; border: 1px solid var(--border); background: white;">
+          <select name="category" id="category"
+                  style="width: 100%; padding: 0.85rem; border-radius: 6px; border: 1px solid var(--border); background: white;">
             <option value="Furniture" {% if product['category'] == 'Furniture' %}selected{% endif %}>Furniture</option>
             <option value="Marine" {% if product['category'] == 'Marine' %}selected{% endif %}>Marine</option>
-            <option value="Construction" {% if product['category'] == 'Construction' %}selected{% endif %}>Construction</option>
+            <option value="Construction" {% if product['category'] == 'Construction' %}selected{% endif %}>
+              Construction
+            </option>
             <option value="Interior" {% if product['category'] == 'Interior' %}selected{% endif %}>Interior</option>
-            <option value="Industrial" {% if product['category'] == 'Industrial' %}selected{% endif %}>Industrial</option>
+            <option value="Industrial" {% if product['category'] == 'Industrial' %}selected{% endif %}>Industrial
+            </option>
           </select>
         </div>
       </div>
@@ -34,7 +39,8 @@
       <textarea name="description" id="description" rows="5"
                 style="width: 100%; border-radius: 6px; border: 1px solid var(--border); padding: 0.85rem; font-family: inherit;">{{ product['description'] }}</textarea>
 
-      <div style="margin-top: 1.5rem; padding: 1rem; border: 1px dashed var(--border); border-radius: var(--radius); text-align: center;">
+      <div
+          style="margin-top: 1.5rem; padding: 1rem; border: 1px dashed var(--border); border-radius: var(--radius); text-align: center;">
         <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem;">Current Image Preview</p>
         <img
             src="{{ product['image_url'] if product['image_url'].startswith('http') else url_for('static', filename='uploads/' + product['image_url']) }}"
@@ -46,7 +52,9 @@
       </div>
 
       <input type="submit" value="Save Changes" style="width: 100%; background: var(--nav); margin-top: 2rem;">
-      <a href="{{ url_for('admin.index') }}" style="display: block; text-align: center; margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">Cancel and Go Back</a>
+      <a href="{{ url_for('admin.index') }}"
+         style="display: block; text-align: center; margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">Cancel
+        and Go Back</a>
     </form>
   </div>
 {% endblock %}

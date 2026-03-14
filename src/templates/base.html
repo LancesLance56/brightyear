@@ -1,14 +1,51 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <meta name="robots" content="index, follow">
+  <meta name="geo.region" content="PH-00" />
+  <meta name="geo.placename" content="Quezon City" />
+
+{% block meta %}
+  <meta name="title" content="Bright Year Plywood and Veneer | Premium Wood Supplies EDSA">
+  <meta name="description" content="Quality Birch, Marine, and Commercial Plywood in Balintawak, Quezon City. Bright Year Plywood offers daily NCR delivery and competitive pricing for all construction projects.">
+  <meta name="keywords" content="Plywood EDSA, Veneer Philippines, Marine Plywood Quezon City, Bright Year Plywood, Wood supplies Balintawak">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yourdomain.com/{{ request.path }}">
+  <meta property="og:title" content="Bright Year Plywood and Veneer | EDSA, Quezon City">
+  <meta property="og:description" content="Find the best deals on Plywood and Veneer in Metro Manila. Visit us at 1241 EDSA for high-quality wood solutions.">
+  <meta property="og:image" content="{{ url_for('static', filename='images/logo-og.png', _external=True) }}">
+
+  <meta name="geo.region" content="PH-NCR" />
+  <meta name="geo.placename" content="Quezon City" />
+  <meta name="geo.position" content="14.6583;121.0039" />
+  <meta name="ICBM" content="14.6583, 121.0039" />
+{% endblock %}
+
+  <title>{% block title %}Quality Plywood & Veneer{% endblock %} | Bright Year Plywood</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}{% endblock %} - Bright Year Plywood</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+
+  <meta name="title" content="{% block meta_title %}{% endblock %}">
+  <meta name="description" content="{% block meta_description %}{% endblock %}">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yourdomain.com/{{ request.path }}">
+  <meta property="og:title" content="{% block og_title %}{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}{% endblock %}">
+  <meta property="og:image" content="
+      {% block og_image %}{{ url_for('static', filename='images/logo-og.png', _external=True) }}{% endblock %}">
+
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="{% block tw_title %}{% endblock %}">
+  <meta property="twitter:description" content="{% block tw_description %}{% endblock %}">
 </head>
 <body>
 
@@ -22,8 +59,9 @@
   <nav>
     <ul>
       <li><a href="{{ url_for('index') }}">Home</a></li>
-      <li><a href="{{ url_for('contact') }}">Contact</a></li>
       <li><a href="{{ url_for('catalog') }}">Products</a></li>
+      <li><a href="{{ url_for('contact_page') }}">Contact Us</a></li>
+      <li><a href="{{ url_for('map_page') }}">Find Us</a></li>
       {% if g.user.username == 'admin' %}
         <li><a href="{{ url_for('admin.index') }}">Admin Page</a></li>
       {% endif %}
@@ -48,8 +86,27 @@
   {% block content %}{% endblock %}
 </section>
 
-<footer>
-  <p>© 2026 Bright Year Plywood LLC</p>
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-column">
+      <span class="footer-brand">Bright Year Plywood LLC</span>
+      <p>Delivering high-quality plywood and veneer for industrial and residential projects across Metro Manila.</p>
+    </div>
+
+    <div class="footer-column">
+      <span class="footer-heading">Contact Us</span>
+      <address class="footer-address">
+        1241 EDSA<br>
+        Balintawak, Quezon City<br>
+        <a href="tel:+283616224">(02) 8361 6224</a><br>
+        <a href="https://www.facebook.com/veneerphilippines">Facebook Page</a>
+      </address>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 Lance Dy Chua. All rights reserved.</p>
+  </div>
 </footer>
 
 </body>
