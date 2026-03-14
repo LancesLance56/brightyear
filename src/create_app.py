@@ -3,7 +3,7 @@ from pathlib import Path
 from urllib.parse import quote
 
 from flask import Flask, render_template, request, redirect
-import db
+from . import db
 
 
 def create_app(test_config=None):
@@ -70,9 +70,8 @@ def create_app(test_config=None):
     # Initialize DB and Blueprints
     db.init_app(app)
 
-    # Use relative imports if these are within the same package
-    import auth
-    import admin
+    from . import auth
+    from . import admin
     app.register_blueprint(auth.bp)
     app.register_blueprint(admin.bp)
 
