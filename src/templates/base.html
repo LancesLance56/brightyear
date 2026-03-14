@@ -4,6 +4,7 @@
   <meta name="robots" content="index, follow">
   <meta name="geo.region" content="PH-00" />
   <meta name="geo.placename" content="Quezon City" />
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
 {% block meta %}
   <meta name="title" content="Bright Year Plywood and Veneer | Premium Wood Supplies EDSA">
@@ -11,7 +12,7 @@
   <meta name="keywords" content="Plywood EDSA, Veneer Philippines, Marine Plywood Quezon City, Bright Year Plywood, Wood supplies Balintawak">
 
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yourdomain.com/{{ request.path }}">
+  <meta property="og:url" content="https://brightyearplywood.com/{{ request.path }}">
   <meta property="og:title" content="Bright Year Plywood and Veneer | EDSA, Quezon City">
   <meta property="og:description" content="Find the best deals on Plywood and Veneer in Metro Manila. Visit us at 1241 EDSA for high-quality wood solutions.">
   <meta property="og:image" content="{{ url_for('static', filename='images/logo-og.png', _external=True) }}">
@@ -37,7 +38,7 @@
   <meta name="description" content="{% block meta_description %}{% endblock %}">
 
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yourdomain.com/{{ request.path }}">
+  <meta property="og:url" content="https://brightyearplywood.com/{{ request.path }}">
   <meta property="og:title" content="{% block og_title %}{% endblock %}">
   <meta property="og:description" content="{% block og_description %}{% endblock %}">
   <meta property="og:image" content="
