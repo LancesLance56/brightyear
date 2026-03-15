@@ -41,7 +41,7 @@ def create_app(test_config=None):
         ).fetchall()
         return render_template("home.html", products=products)
 
-    @app.route('/catalog')
+    @app.route('/quezon-city-bright-year-plywood-catalog')
     def catalog():
         conn = get_db()
         products = conn.execute(
@@ -49,7 +49,7 @@ def create_app(test_config=None):
         ).fetchall()
         return render_template("catalog.html", products=products)
 
-    @app.route('/contact', methods=['GET', 'POST'])
+    @app.route('/quezon-city-bright-year-plywood-contact', methods=['GET', 'POST'])
     def contact_page():
         if request.method == 'POST':
             name = request.form.get('name')
@@ -63,7 +63,7 @@ def create_app(test_config=None):
 
         return render_template('contact.html')
 
-    @app.route('/map')
+    @app.route('/quezon-city-bright-year-plywood-map')
     def map_page():
         return render_template('map.html')
 

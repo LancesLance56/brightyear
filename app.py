@@ -10,7 +10,7 @@ order_counter = metrics.counter(
     labels={'location': 'QuezonCity'}
     )
 
-@site.route('/contact')
+@site.route('/quezon-city-bright-year-plywood-contact')
 def contact():
     order_counter.inc()
     return "Contact attempted!"
